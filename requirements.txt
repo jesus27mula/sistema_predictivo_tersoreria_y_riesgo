@@ -1,0 +1,24 @@
+# Core data science
+numpy>=1.26,<3
+pandas>=2.2,<3
+scipy>=1.12,<2
+
+# Machine learning
+scikit-learn>=1.5,<2
+xgboost>=2.1,<4
+lightgbm>=4.5,<5
+joblib>=1.4,<2
+
+# Data formats
+pyarrow>=15,<25
+
+# Visualisation
+matplotlib>=3.8,<4
+plotly>=5.20,<7
+
+# Front end
+streamlit>=1.40,<2
+
+# Jupyter / VS Code notebooks
+jupyter>=1.1,<2
+ipykernel>=6.29,<8

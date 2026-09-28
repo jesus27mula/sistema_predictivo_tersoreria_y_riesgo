@@ -1,0 +1,14 @@
+{
+    "model": "LogisticRegression_Model_C",
+    "model_feature_count": 34,
+    "primary_scoring_period": "VALIDATION_OOS",
+    "primary_invoice_count": 381,
+    "prioritization_share": 0.25,
+    "prioritization_count": 96,
+    "stress_delay_days": 10,
+    "monte_carlo_repeats": 500,
+    "validation_roc_auc": 0.904386845738672,
+    "validation_pr_auc": 0.8017980485185485,
+    "test_roc_auc": 0.8590426551182309,
+    "test_pr_auc": 0.6933587025291494
+}
