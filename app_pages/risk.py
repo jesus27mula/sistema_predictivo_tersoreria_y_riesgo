@@ -1,4 +1,5 @@
 import math
+from io import BytesIO
 
 import pandas as pd
 import plotly.express as px
@@ -232,6 +233,11 @@ with st.container(
                 key="risk_ranking_mode",
             )
         )
+    
+    if ranking_mode is None:
+        ranking_mode = (
+            "Mayor exposición ajustada"
+        )
 
 
     with filter_col5:
@@ -309,9 +315,10 @@ ranking_column_map = {
 }
 
 ranking_column = (
-    ranking_column_map[
-        ranking_mode
-    ]
+    ranking_column_map.get(
+        ranking_mode,
+        "risk_weighted_exposure"
+    )
 )
 
 
@@ -790,6 +797,25 @@ export_df[
     "%d/%m/%Y"
 )
 
+export_df[
+    "Factura"
+] = (
+    export_df[
+        "Factura"
+    ]
+    .astype(str)
+)
+
+export_df[
+    "Cliente"
+] = (
+    export_df[
+        "Cliente"
+    ]
+    .astype(str)
+)
+
+
 
 csv_data = (
     export_df
@@ -804,11 +830,30 @@ csv_data = (
 )
 
 
+excel_buffer = BytesIO()
+
+with pd.ExcelWriter(
+    excel_buffer,
+    engine="openpyxl",
+) as writer:
+
+    export_df.to_excel(
+        writer,
+        index=False,
+        sheet_name="Cartera priorizada",
+    )
+
+excel_buffer.seek(0)
+
+
 st.download_button(
     label="⬇ Descargar cartera priorizada",
-    data=csv_data,
-    file_name="cartera_priorizada.csv",
-    mime="text/csv",
+    data=excel_buffer,
+    file_name="cartera_priorizada.xlsx",
+    mime=(
+        "application/vnd.openxmlformats-"
+        "officedocument.spreadsheetml.sheet"
+    ),
 )
 
 

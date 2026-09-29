@@ -483,20 +483,15 @@ minimum_delta = (
 
 
 metric1.metric(
-    "Saldo mínimo",
+    "Liquidez mínima",
     format_amount(
         metrics[
             "minimum_balance"
         ]
     ),
-    delta=format_amount(
-        minimum_delta
-    ),
-    delta_color="normal",
     help=(
-        "Diferencia respecto al mínimo "
-        "del escenario base con el mismo "
-        "saldo inicial."
+        "Saldo de caja mínimo alcanzado "
+        "durante el escenario simulado."
     ),
     border=True,
 )

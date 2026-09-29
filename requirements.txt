@@ -11,6 +11,7 @@ joblib>=1.4,<2
 
 # Data formats
 pyarrow>=15,<25
+openpyxl>=3.1,<4
 
 # Visualisation
 matplotlib>=3.8,<4

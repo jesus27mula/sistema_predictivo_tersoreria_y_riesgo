@@ -144,6 +144,12 @@ priority_exposure = float(
     ].sum()
 )
 
+initial_cash = float(
+    daily[
+        "opening_cash_balance"
+    ].iloc[0]
+)
+
 
 kpi1, kpi2, kpi3, kpi4 = (
     st.columns(4)
@@ -153,6 +159,10 @@ kpi1.metric(
     "Liquidez final",
     format_amount(
         final_balance
+    ),
+    help=(
+        "Saldo inicial + cobros acumulados - pagos acumulados. "
+        f"Saldo inicial del escenario: {format_amount(initial_cash)}."
     ),
     border=True,
 )
